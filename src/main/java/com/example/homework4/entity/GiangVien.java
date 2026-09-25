@@ -8,6 +8,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class GiangVien {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,18 +10,24 @@
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 
-<form action="" method="post">
-    ID <input type="text" name="id">
-    Name <input type="text" name="name">
-    Age
-    Min <input type="number" name="min">
-    Max <input type="number" name="max">
-    <button>Search</button>
+<!-- Form Tìm kiếm -->
+<form action="search" method="GET">
+    Tên: <input type="text" name="searchTen"><br><br>
+    Tuổi:<br>
+    Min: <input type="number" name="minAge"><br><br>
+    Max: <input type="number" name="maxAge"><br><br>
+    <button type="submit">Search</button>
+</form>
 
+<br><hr><br>
 
-    Mã GV <input type="text" name="idgv">
-    Họ Tên <input type="text" name="">
-    Tuổi
+<!-- Form Thêm Giảng Viên -->
+<form action="add" method="POST">
+    Mã GV: <input type="text" name="maGv">
+    Họ tên: <input type="text" name="hoTen"><br><br>
+    Tuổi: <input type="number" name="tuoi">
+    Quê quán: <input type="text" name="queQuan"><br><br>
+    <button type="submit">Add</button>
 </form>
 </body>
 </html>

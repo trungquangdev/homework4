@@ -77,7 +77,18 @@ public class GiangVienRepository {
     }
 
     public static void main(String[] args) {
+
+
+        GiangVienRepository repository = new GiangVienRepository();
+        GiangVien gv = new GiangVien();
+
+        gv.setMsgv("GV001");
+        gv.setTen("Nguyen Van An");
+        gv.setTuoi(30L);
+        gv.setGioiTinh(true);
+        gv.setQueQuan("Ha Noi");
+
+        repository.add(gv);
         System.out.println(new GiangVienRepository().getAll());
-//        System.out.println(new GiangVienRepository().findById(1L));
     }
 }
