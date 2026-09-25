@@ -6,19 +6,24 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "giangVienServlet", value = "/add")
-public class GiangVienServlet extends HttpServlet {
-    private String message;
+@WebServlet(name = "giangVienServlet", urlPatterns = { "/search","/add"} ) //nhieu duong dan cho 1 servlet
 
-    public void init() {
-        message = "Hello World!";
-    }
+public class GiangVienServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");
+        String ten = request.getParameter("ten");
+        String minAge = request.getParameter("minAge");
+        String maxAge = request.getParameter("maxAge");
+        String sex = request.getParameter("sex");
 
     }
 
-    public void destroy() {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String maGv= req.getParameter("maGv");
+        String hoTen = req.getParameter("hoTen");
+        String tuoi = req.getParameter("tuoi");
+        String queQuan = req.getParameter("queQuan");
+        String sex = req.getParameter("sex");
     }
 }
