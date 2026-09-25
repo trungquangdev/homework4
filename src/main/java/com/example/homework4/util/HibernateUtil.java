@@ -1,5 +1,5 @@
 package com.example.homework4.util;
-
+import com.example.homework4.entity.GiangVien;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -14,6 +14,9 @@ public class HibernateUtil {
 
     static {
         Configuration configuration = new Configuration();
+
+        // Đăng ký Entity với Hibernate
+        configuration.addAnnotatedClass(GiangVien.class);
 
         Properties properties = new Properties();
 

@@ -59,6 +59,7 @@ public class GiangVienRepository {
             //b1: bat dau 1 transiton
             s.getTransaction().begin();
             // b2: thuc hien chuc nang add -> persit
+            // B2: Thêm entity
             s.delete(id);
             //b3: commit
             s.getTransaction().commit();
@@ -72,6 +73,11 @@ public class GiangVienRepository {
                                   Long min,
                                   Long max,
                                   Boolean gioiTinh) {
-        return
+        return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new GiangVienRepository().getAll());
+//        System.out.println(new GiangVienRepository().findById(1L));
     }
 }

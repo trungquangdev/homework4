@@ -19,7 +19,7 @@ public class GiangVien {
     //       ↓
     //Dùng @Column(name = "tên_cột_DB")
     private Long id;
-    private String mssv;
+    private String msgv;
     private String ten;
     private Long tuoi;
     @Column(name = "gioi_tinh")
