@@ -63,11 +63,15 @@ public class HibernateUtil {
         FACTORY = configuration.buildSessionFactory(serviceRegistry);
     }
 
-    public static SessionFactory getFACTORY() {
-        return FACTORY;
-    }
+//    public static SessionFactory getFACTORY() {
+//        return FACTORY;
+//    }
 
-    public static void main(String[] args) {
-        System.out.println(getFACTORY());
-    }
+//    public static void main(String[] args) {
+//        System.out.println(getFACTORY());
+//    }
+
+    // Hàm getter duy nhất để lấy SessionFactory dùng chung - mọi Repository trong app
+    // đều gọi HibernateUtil.getFACTORY().openSession() để tự mở session riêng của mình.
+    public static SessionFactory getFactory(){return FACTORY;}
 }

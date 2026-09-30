@@ -3,20 +3,17 @@ package com.example.homework4.repository;
 import com.example.homework4.entity.GiangVien;
 import com.example.homework4.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 public class GiangVienRepository {
-    private Session s;
 
-    public GiangVienRepository() {
-        //mo phien trong contructor
-        s = HibernateUtil.getFACTORY().openSession();
-    }
-
-
+    //lấy toàn bộ ds GiangVien->dùng cho trang giangvien.jsp
     public List<GiangVien> getAll() {
-        return s.createQuery("from GiangVien ").list();
+        try(Session s=HibernateUtil.getFactory().openSession()){
+            return s.createQuery("from GiangVien ", GiangVien.class).list();
+        }
     }
 
     public GiangVien findById(Long id) {// lấy một giảng viên
