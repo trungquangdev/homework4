@@ -38,7 +38,7 @@
     <br><br>
 
     <button type="submit">Update</button>
-    <a href="${ctx}/gv/show">Quay lại</a>
+    <a href="/gv/show">Quay lại</a>
 </form>
 
 </body>

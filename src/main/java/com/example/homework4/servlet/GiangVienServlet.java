@@ -24,7 +24,6 @@ import org.apache.commons.beanutils.BeanUtils;
 public class GiangVienServlet extends HttpServlet {
     private GiangVienRepository gvR = new GiangVienRepository();
 
-    // ===================== GET =====================
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String uri = request.getRequestURI();
         if (uri.contains("/gv/show")) {
