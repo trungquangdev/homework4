@@ -72,7 +72,7 @@ public class GiangVienServlet extends HttpServlet {
     private void detailGv(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String id = request.getParameter("id");
         GiangVien gv= gvR.findById(Long.valueOf(id));
-        request.setAttribute("g",gv);
+        request.getRequestDispatcher("/detail.jsp").forward(request,response);
     }
 
     private void showGv(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
