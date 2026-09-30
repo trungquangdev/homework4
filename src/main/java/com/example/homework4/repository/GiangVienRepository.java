@@ -55,12 +55,12 @@ public class GiangVienRepository {
         }
     }
 
-    public void delete(Long id) {
+    public void delete(GiangVien gv) {
         try(Session s = HibernateUtil.getFactory().openSession()){
             Transaction tx = s.getTransaction();
             try{
                 tx.begin();
-                s.remove(id);
+                s.remove(gv);
                 tx.commit();
             }catch (Exception e){
                 if(tx.isActive()){

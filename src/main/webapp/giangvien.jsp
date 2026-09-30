@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%--<%@ taglib prefix="c" uri="jakarta.tags.core" %>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@
 <br><hr><br>
 
 
-<form action="add" method="POST">
+<form action="/gv/add" method="POST">
     Mã GV: <input type="text" name="maGv">
     Họ tên: <input type="text" name="hoTen"><br><br>
     Tuổi: <input type="number" name="tuoi">
@@ -44,11 +45,26 @@
     <tbody>
         <c:forEach items="${dsGv}" var="g">
             <tr>
-                <td>${g.msgv}</td>
-                <td>${g.ten}</td>
+                <td><c:out value=" ${g.msgv}"/></td>
+                <td><c:out value=" ${g.ten}"/></td>
                 <td>${g.tuoi}</td>
-                <td>${g.queQuan}</td>
-                <td>${g.gioiTinh}</td>
+                <td><c:out value=" ${g.queQuan}"/></td>
+                <td>${g.gioiTinh ? 'Nam' : 'Nữ'}</td>
+
+                <td>
+                    <form action="/gv/detail" method="get">
+                        <input type="hidden" name="id" value="${g.id}">
+                        <button type="submit">Detail</button>
+                    </form>
+                    <form action="/gv/view-update" method="get">
+                        <input type="hidden" name="id" value="${g.id}">
+                        <button type="submit">Update</button>
+                    </form>
+                    <form action="/gv/delete" method="get">
+                        <input type="hidden" name="id" value="${g.id}">
+                        <button>Remove</button>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
     </tbody>

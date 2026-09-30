@@ -23,8 +23,8 @@ public class GiangVien {
     private String msgv;
     private String ten;
     private Long tuoi;
-    @Column(name = "gioi_tinh")
-    private Boolean gioiTinh;
     @Column(name = "que_quan")
     private String queQuan;
+    @Column(name = "gioi_tinh")
+    private Boolean gioiTinh;
 }
