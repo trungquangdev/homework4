@@ -8,14 +8,14 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "giangVienServlet", urlPatterns = {
-        "gv/show",
-        "gv/detail",
-        "gv/add",
-        "gv/view-add",
-        "gv/update",
-        "gv/view-update",
-        "gv/delete",
-        "gv/search",
+        "/gv/show",
+        "/gv/detail",
+        "/gv/add",
+        "/gv/view-add",
+        "/gv/update",
+        "/gv/view-update",
+        "/gv/delete",
+        "/gv/search",
 } ) //nhieu duong dan cho 1 servlet
 
 public class GiangVienServlet extends HttpServlet {

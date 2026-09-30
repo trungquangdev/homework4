@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,6 @@
 </head>
 <body>
 
-</h1>
 <br/>
 
 <form action="search" method="GET">
@@ -42,7 +41,15 @@
     </tr>
     </thead>
     <tbody>
-        <c:forEach items="${}"
+        <c:forEach items="${dsGv}" var="g">
+            <tr>
+                <td>${g.msgv}</td>
+                <td>${g.ten}</td>
+                <td>${g.tuoi}</td>
+                <td>${g.gioiTinh}</td>
+                <td>${g.queQuan}</td>
+            </tr>
+        </c:forEach>
     </tbody>
 </table>
 </body>
