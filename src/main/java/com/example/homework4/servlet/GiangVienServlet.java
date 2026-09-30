@@ -72,6 +72,7 @@ public class GiangVienServlet extends HttpServlet {
     private void detailGv(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String id = request.getParameter("id");
         GiangVien gv= gvR.findById(Long.valueOf(id));
+        request.setAttribute("gv", gv);
         request.getRequestDispatcher("/detail.jsp").forward(request,response);
     }
 
@@ -94,7 +95,7 @@ public class GiangVienServlet extends HttpServlet {
         GiangVien gv = new GiangVien();
         BeanUtils.populate(gv,request.getParameterMap());
         gvR.add(gv);
-        response.sendRedirect("/gv/show");
+        response.sendRedirect(request.getContextPath()+"/gv/show");
     }
     private void updateGv(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     }

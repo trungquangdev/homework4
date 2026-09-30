@@ -15,19 +15,19 @@
     Tuổi:<br>
     Min: <input type="number" name="minAge"><br><br>
     Max: <input type="number" name="maxAge"><br><br>
-    Giới Tính:<br> Nam <input type="radio" name="sex" value="true">  Nữ <input type="radio" name="sex" value="false"> <br><br>
+    Giới Tính:<br> Nam <input type="radio" name="gioiTinh" value="true">  Nữ <input type="radio" name="gioiTinh" value="false"> <br><br>
     <button type="submit">Search</button>
 </form>
 
 <br><hr><br>
 
 
-<form action="/gv/add" method="POST">
-    Mã GV: <input type="text" name="masgv">
+<form action="${pageContext.request.contextPath}/gv/add" method="POST">
+    Mã GV: <input type="text" name="msgv">
     Họ tên: <input type="text" name="ten"><br><br>
     Tuổi: <input type="number" name="tuoi">
     Quê quán: <input type="text" name="queQuan"><br><br>
-    Giới Tính:<br> Nam <input type="radio" name="gioiTinh" value="true">  Nữ <input type="radio" name="sex" value="false"> <br><br>
+    Giới Tính:<br> Nam <input type="radio" name="gioiTinh" value="true">  Nữ <input type="radio" name="gioiTinh" value="false"> <br><br>
     <button type="submit">Add</button>
 </form>
 <br><br>
@@ -52,15 +52,15 @@
                 <td>${g.gioiTinh ? 'Nam' : 'Nữ'}</td>
 
                 <td>
-                    <form action="/gv/detail" method="get">
+                    <form action="${pageContext.request.contextPath}/gv/detail" method="get">
                         <input type="hidden" name="id" value="${g.id}">
                         <button type="submit">Detail</button>
                     </form>
-                    <form action="/gv/view-update" method="get">
+                    <form action="${pageContext.request.contextPath}/gv/view-update" method="get">
                         <input type="hidden" name="id" value="${g.id}">
                         <button type="submit">Update</button>
                     </form>
-                    <form action="/gv/delete" method="get">
+                    <form action="${pageContext.request.contextPath}/gv/delete" method="get">
                         <input type="hidden" name="id" value="${g.id}">
                         <button>Remove</button>
                     </form>
