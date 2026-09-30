@@ -37,6 +37,7 @@
         <th>Họ Tên</th>
         <th>Tuổi</th>
         <th>Quê quán</th>
+        <th>Giới tính</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -46,8 +47,8 @@
                 <td>${g.msgv}</td>
                 <td>${g.ten}</td>
                 <td>${g.tuoi}</td>
-                <td>${g.gioiTinh}</td>
                 <td>${g.queQuan}</td>
+                <td>${g.gioiTinh}</td>
             </tr>
         </c:forEach>
     </tbody>
