@@ -2,13 +2,24 @@ package com.example.homework4.servlet;
 
 import java.io.*;
 
+import com.example.homework4.repository.GiangVienRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "giangVienServlet", urlPatterns = { "/search","/add"} ) //nhieu duong dan cho 1 servlet
+@WebServlet(name = "giangVienServlet", urlPatterns = {
+        "gv/show",
+        "gv/detail",
+        "gv/add",
+        "gv/view-add",
+        "gv/update",
+        "gv/view-update",
+        "gv/delete",
+        "gv/search",
+} ) //nhieu duong dan cho 1 servlet
 
 public class GiangVienServlet extends HttpServlet {
+    private GiangVienRepository gvR=new GiangVienRepository();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String ten = request.getParameter("ten");

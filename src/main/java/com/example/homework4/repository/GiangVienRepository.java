@@ -60,7 +60,7 @@ public class GiangVienRepository {
             Transaction tx = s.getTransaction();
             try{
                 tx.begin();
-                s.remove(gv);
+                s.remove(id);
                 tx.commit();
             }catch (Exception e){
                 if(tx.isActive()){
