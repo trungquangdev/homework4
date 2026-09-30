@@ -19,7 +19,7 @@
     <br>
     Age: ${g.tuoi}
     <br>
-    City: ${g.queQUan}
+    City: ${g.queQuan}
     <br>
     Sex: ${g.gioiTinh}
     <br>

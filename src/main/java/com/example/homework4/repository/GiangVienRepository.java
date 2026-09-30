@@ -3,8 +3,8 @@ package com.example.homework4.repository;
 import com.example.homework4.entity.GiangVien;
 import com.example.homework4.util.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -30,66 +30,81 @@ public class GiangVienRepository {
             try {
                 tx.begin(); // bắt đầu giao dịch
                 s.persist(gv); // đánh dấu "gv" cần được INSERT vào DB
-                tx.commit();// xác nhận -> Hibernate thật sự chạy câu INSERT lúc này
+                tx.commit();// xác nhận
             } catch (Exception e) {
                 if (tx.isActive()) {
                     tx.rollback();
                 }
-                throw new RuntimeException("Khong them duoc giang vien",e);
+                throw new RuntimeException("Khong them duoc giang vien", e);
             }
         }
     }
 
     public void update(GiangVien gv) {
-        try(Session s=HibernateUtil.getFactory().openSession()){
-            Transaction tx=s.getTransaction();
-            try{
+        try (Session s = HibernateUtil.getFactory().openSession()) {
+            Transaction tx = s.getTransaction();
+            try {
                 tx.begin();
-                s.merge(gv);
+                s.merge(gv); // gv có id -> Hibernate UPDATE dòng có id đó
                 tx.commit();
-            }catch (Exception e){
-                if(tx.isActive()){
+            } catch (Exception e) {
+                if (tx.isActive()) {
                     tx.rollback();
-                }throw new RuntimeException("Sua that bai",e);
+                }
+                throw new RuntimeException("Sua that bai", e);
             }
         }
     }
 
     public void delete(GiangVien gv) {
-        try(Session s = HibernateUtil.getFactory().openSession()){
+        try (Session s = HibernateUtil.getFactory().openSession()) {
             Transaction tx = s.getTransaction();
-            try{
+            try {
                 tx.begin();
-                s.remove(gv);
+                // gv được lấy từ session khác (đã đóng) -> tìm lại trong session này rồi mới remove
+                GiangVien canXoa = s.find(GiangVien.class, gv.getId());
+                if (canXoa != null) {
+                    s.remove(canXoa);
+                }
                 tx.commit();
-            }catch (Exception e){
-                if(tx.isActive()){
+            } catch (Exception e) {
+                if (tx.isActive()) {
                     tx.rollback();
-                }throw new RuntimeException("Xoa that bai",e);
+                }
+                throw new RuntimeException("Xoa that bai", e);
             }
         }
     }
 
-    public List<GiangVien> search(String ten,
-                                  Long min,
-                                  Long max,
-                                  Boolean gioiTinh) {
-        return null;
-    }
+    // Tìm kiếm: ô nào không nhập (null / rỗng) thì bỏ qua điều kiện đó,
+    // các ô có nhập được kết hợp bằng AND.
+    public List<GiangVien> search(String ten, Long min, Long max) {
+        boolean coTen = ten != null && !ten.trim().isEmpty();
 
-    public static void main(String[] args) {
+        StringBuilder hql = new StringBuilder("from GiangVien where 1=1");
+        if (coTen) {
+            hql.append(" and lower(ten) like :ten");
+        }
+        if (min != null) {
+            hql.append(" and tuoi >= :min");
+        }
+        if (max != null) {
+            hql.append(" and tuoi <= :max");
+        }
 
-
-        GiangVienRepository repository = new GiangVienRepository();
-        GiangVien gv = new GiangVien();
-
-        gv.setMsgv("GV001");
-        gv.setTen("Nguyen Van An");
-        gv.setTuoi(30L);
-        gv.setGioiTinh(true);
-        gv.setQueQuan("Ha Noi");
-
-        repository.add(gv);
-        System.out.println(new GiangVienRepository().getAll());
+        try (Session s = HibernateUtil.getFactory().openSession()) {
+            Query<GiangVien> q = s.createQuery(hql.toString(), GiangVien.class);
+            // Dùng tham số (:ten, :min, :max) thay vì nối chuỗi -> tránh SQL injection
+            if (coTen) {
+                q.setParameter("ten", "%" + ten.trim().toLowerCase() + "%");
+            }
+            if (min != null) {
+                q.setParameter("min", min);
+            }
+            if (max != null) {
+                q.setParameter("max", max);
+            }
+            return q.list();
+        }
     }
 }
