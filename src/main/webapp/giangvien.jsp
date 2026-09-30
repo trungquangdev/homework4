@@ -29,5 +29,20 @@
     Giới Tính:<br> Nam <input type="radio" name="sex" value="true">  Nữ <input type="radio" name="sex" value="false"> <br><br>
     <button type="submit">Add</button>
 </form>
+<br><br>
+<table border="1" cellspacing="1" cellpadding="10">
+    <thead>
+    <tr>
+        <th>Mã GV</th>
+        <th>Họ Tên</th>
+        <th>Tuổi</th>
+        <th>Quê quán</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
 </body>
 </html>
