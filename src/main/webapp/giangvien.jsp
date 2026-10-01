@@ -15,6 +15,7 @@
     <button type="submit">Search</button>
 </form>
 
+
 <br>
 
 <%--
@@ -73,6 +74,18 @@
     </c:forEach>
     </tbody>
 </table>
+<br>
 
+<c:if test="${not empty gv}">
+    <h3>Chi tiết giảng viên</h3>
+
+    <p>Mã GV: ${gv.msgv}</p>
+    <p>Họ tên: ${gv.ten}</p>
+    <p>Tuổi: ${gv.tuoi}</p>
+    <p>Quê quán: ${gv.queQuan}</p>
+    <p>Giới tính: ${gv.gioiTinh ? 'Nam' : 'Nữ'}</p>
+</c:if>
+
+<br>
 </body>
 </html>
