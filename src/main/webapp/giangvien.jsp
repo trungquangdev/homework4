@@ -28,6 +28,7 @@
   vì servlet dùng BeanUtils.populate.
 --%>
 <form action="/gv/add" method="POST">
+    //request.setAttribute("gv", gv);
     Mã GV: <input type="text" name="msgv" value="<c:out value='${empty gv ? param.msgv : gv.msgv}'/>">
     Họ tên: <input type="text" name="ten" value="<c:out value='${empty gv ? param.ten : gv.ten}'/>"><br><br>
     Tuổi: <input type="number" name="tuoi" value="<c:out value='${empty gv ? param.tuoi : gv.tuoi}'/>">
@@ -52,6 +53,7 @@
     </tr>
     </thead>
     <tbody>
+    //request.setAttribute("dsGv", gvR.getAll()); showGv - servlet
     <c:forEach items="${dsGv}" var="g">
         <tr>
             <td><c:out value="${g.msgv}"/></td>
