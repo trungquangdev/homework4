@@ -50,25 +50,11 @@
     //request.setAttribute("dsGv", gvR.getAll()); showGv - servlet
     <c:forEach items="${dsGv}" var="g">
         <tr>
-            <td>
-                <c:out value="${g.msgv}"/>
-            </td>
-
-            <td>
-                <c:out value="${g.ten}"/>
-            </td>
-
-            <td>
-                    ${g.tuoi}
-            </td>
-
-            <td>
-                <c:out value="${g.queQuan}"/>
-            </td>
-
-            <td>
-                    ${g.gioiTinh ? 'Nam' : 'Nữ'}
-            </td>
+            <td><c:out value="${g.msgv}"/></td>
+            <td><c:out value="${g.ten}"/></td>
+            <td>${g.tuoi}</td>
+            <td><c:out value="${g.queQuan}"/></td>
+            <td>${g.gioiTinh ? 'Nam' : 'Nữ'}</td>
             <td>
                 <form action="/gv/detail" method="get">
                     <input type="hidden" name="id" value="${g.id}">
