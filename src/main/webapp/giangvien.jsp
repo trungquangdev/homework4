@@ -23,11 +23,11 @@
   vì servlet dùng BeanUtils.populate.
 --%>
 <form action="/gv/add" method="POST">
-    //request.setAttribute("gv", gv);
-    Mã GV: <input type="text" name="msgv"/>">
-    Họ tên: <input type="text" name="ten"/>"><br><br>
-    Tuổi: <input type="number" name="tuoi"/>">
-    Quê quán: <input type="text" name="queQuan"/>"><br><br>
+<%--    //request.setAttribute("gv", gv);--%>
+    Mã GV: <input type="text" name="msgv"/>
+    Họ tên: <input type="text" name="ten"/><br><br>
+    Tuổi: <input type="number" name="tuoi"/>
+    Quê quán: <input type="text" name="queQuan"/><br><br>
     Giới tính:
     Nam <input type="radio" name="gioiTinh">
     Nữ <input type="radio" name="gioiTinh">
@@ -78,7 +78,6 @@
 
 <c:if test="${not empty gv}">
     <h3>Chi tiết giảng viên</h3>
-
     <p>Mã GV: ${gv.msgv}</p>
     <p>Họ tên: ${gv.ten}</p>
     <p>Tuổi: ${gv.tuoi}</p>
