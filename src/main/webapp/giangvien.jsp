@@ -48,7 +48,7 @@
     </tr>
     </thead>
     <tbody>
-    //request.setAttribute("dsGv", gvR.getAll()); showGv - servlet
+<%--    request.setAttribute("dsGv", gvR.getAll()); showGv - servlet--%>
     <c:forEach items="${dsGv}" var="g">
         <tr>
             <td><c:out value="${g.msgv}"/></td>
